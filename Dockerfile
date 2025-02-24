@@ -1,5 +1,5 @@
 # Exact 24:04 image
-FROM amd64/ubuntu:noble-20250127
+FROM amd64/ubuntu:noble-20241015
 
 # Original Server v436
 ADD files/ut-server-linux-436.tar.gz /
