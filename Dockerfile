@@ -1,4 +1,5 @@
-FROM amd64/ubuntu:latest
+# Exact 24:04 image
+FROM amd64/ubuntu:noble-20250127
 
 # Original Server v436
 ADD files/ut-server-linux-436.tar.gz /
@@ -27,7 +28,8 @@ ENV UT_SERVERURL="CTF-Face?game=BotPack.CTFGame?mutator=BotPack.InstaGibDM,MVES.
 # Prepare the system
 RUN dpkg --add-architecture i386 \
     && apt update \
-    && apt install -y nano curl wget python3 jq libx11-6:i386 \
+    # Added libxext6 as ucc complained at launch that it didn't exist
+    && apt install -y nano curl wget python3 jq libx11-6:i386 libxext6:i386 \
     && rm -rf /var/lib/apt/lists/*
 
 # Create a link of this file to the missing file
