@@ -2,6 +2,12 @@ name: Docker Image CI
 
 on:
   push:
+    paths-ignore:
+      - '*.md'
+      - '*.yml'
+      - '*.yaml'
+      - '.github/**'
+      - 'LICENSE'
 
 jobs:
   build:
