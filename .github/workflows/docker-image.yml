@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: roemer/ut99-server
+      IMAGE_NAME: inanimate/ut99-server
     steps:
     - name: Set Image Tag
       run: |
