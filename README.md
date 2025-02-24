@@ -1,3 +1,9 @@
+# Docker UT99! Forked from Rohmer
+
+Things done
+* Utilize OldUnreal 469-rc7 since that what I'm having clients use.
+
+
 # ut99-server
 A dockerfile for a fully functional and easy configurable Unreal Tournament 99 server.
 This image is based on the original linux server 436 with all four bonus packs and the OldUnreal 469c patch for linux.

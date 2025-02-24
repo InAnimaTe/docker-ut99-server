@@ -1,9 +1,10 @@
-FROM amd64/ubuntu:latest
+# Exact 24:04 image
+FROM amd64/ubuntu:noble-20241015
 
 # Original Server v436
 ADD files/ut-server-linux-436.tar.gz /
 # Update to 469c
-ADD files/Patches/OldUnreal-UTPatch469d-Linux-x86.tar.bz2 /ut-server/
+ADD https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469e-rc7/OldUnreal-UTPatch469e-Linux-x86.tar.bz2 /ut-server/
 # Fix for broken maps from the original file
 ADD files/Patches/BrokenMapsFix.tar.gz /ut-server/
 # Add the bonus packs
@@ -27,7 +28,8 @@ ENV UT_SERVERURL="CTF-Face?game=BotPack.CTFGame?mutator=BotPack.InstaGibDM,MVES.
 # Prepare the system
 RUN dpkg --add-architecture i386 \
     && apt update \
-    && apt install -y nano curl wget python3 jq libx11-6:i386 \
+    # Added libxext6 as ucc complained at launch that it didn't exist
+    && apt install -y nano curl wget python3 jq libx11-6:i386 libxext6:i386 \
     && rm -rf /var/lib/apt/lists/*
 
 # Create a link of this file to the missing file
